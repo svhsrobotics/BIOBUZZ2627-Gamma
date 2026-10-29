@@ -45,10 +45,12 @@ public class Bot_Leo extends OpMode {
         rightBack.setPower(0.85 * (y + x - rx));
 
         if (gamepad1.left_bumper) {
-            leftIntake.setPower(2);
-            rightIntake.setPower(2);
-        }
-        else {
+            leftIntake.setPower(-3);
+            rightIntake.setPower(3);
+        } else if (gamepad1.right_bumper) {
+            leftIntake.setPower(3);
+            rightIntake.setPower(-3);
+        } else {
             leftIntake.setPower(0);
             rightIntake.setPower(0);
         }
