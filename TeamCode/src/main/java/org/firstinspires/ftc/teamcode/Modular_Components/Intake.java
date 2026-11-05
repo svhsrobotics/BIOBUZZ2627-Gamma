@@ -7,7 +7,6 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 public class Intake {
     DcMotor leftIntake;
     DcMotor rightIntake;
-
     public void init(HardwareMap hardwareMap) {
         leftIntake = hardwareMap.get(DcMotor.class, "left_intake");
         rightIntake = hardwareMap.get(DcMotor.class, "right_intake");

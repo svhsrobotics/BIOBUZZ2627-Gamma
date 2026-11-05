@@ -4,7 +4,6 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 public class Drivetrain {
-
     public static double maxMotorPower = 0.85;
     private DcMotor leftFront; //motor port 0
     private DcMotor rightFront; //motor port 1
