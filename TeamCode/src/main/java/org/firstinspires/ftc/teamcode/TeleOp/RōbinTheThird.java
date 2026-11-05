@@ -8,6 +8,8 @@ import org.firstinspires.ftc.teamcode.Modular_Components.Intake;
 
 @TeleOp
 public class RōbinTheThird extends OpMode {
+
+    double angle = 0;
     double intakePower = 0;
     boolean useIntake = false;
     public Drivetrain drive = new Drivetrain();
@@ -32,6 +34,15 @@ public class RōbinTheThird extends OpMode {
 
         drive.mecanumDrive(-gamepad1.left_stick_y, gamepad1.left_stick_x, gamepad1.right_stick_x);
 
+        if(gamepad1.left_bumper) {
+            intake.adjustBar(1);
+            angle = 1;
+        }
+        else {
+            intake.adjustBar(0);
+            angle = 0;
+        }
+
         if(gamepad1.rightBumperWasReleased()) {
             if(useIntake) {
                 useIntake = false;
@@ -40,9 +51,13 @@ public class RōbinTheThird extends OpMode {
                 useIntake = true;
             }
         }
-        if(useIntake) {
+        if(useIntake && intake.inPosition(angle)) {
             intake.run(intakePower);
         }
+        else {
+            intake.run(0);
+        }
+
         telemetry.update();
     }
 }
