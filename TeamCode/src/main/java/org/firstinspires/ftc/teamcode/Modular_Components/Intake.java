@@ -10,8 +10,6 @@ import org.firstinspires.ftc.robotcore.external.Telemetry;
 public class Intake {
 
     private Telemetry telemetry;
-    public boolean safetySwitch = true;
-    public double geckoLimit = 5;
     Servo leftIntake;
     Servo rightIntake;
     DcMotor intake;
@@ -32,15 +30,6 @@ public class Intake {
     public void run(double power) {
         //positive power is intake
         //negative power is outtake
-
-        telemetry.addData("Gecko Safety Switch: ", safetySwitch);
-
-        if ((Math.abs(power) > geckoLimit) && (safetySwitch = true)) {
-            telemetry.addLine("Unsafe power levels. ");
-            telemetry.addLine("Would you like to proceed?");
-            intake.setPower(geckoLimit);
-        } else {
-            intake.setPower(power);
-        }
+        intake.setPower(power);
     }
 }
