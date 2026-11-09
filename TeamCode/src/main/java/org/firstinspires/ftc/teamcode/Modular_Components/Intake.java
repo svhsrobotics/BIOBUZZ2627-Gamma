@@ -9,13 +9,15 @@ import org.firstinspires.ftc.robotcore.external.Telemetry;
 
 public class Intake {
 
-    public boolean safetySwitch = true;
     private Telemetry telemetry;
+    public boolean safetySwitch = true;
     public double geckoLimit = 0.1;
     Servo leftIntake;
     Servo rightIntake;
     DcMotor intake;
-    public void init(HardwareMap hardwareMap) {
+    public void init(HardwareMap hardwareMap, Telemetry telemetry) {
+
+        this.telemetry = telemetry;
 
         leftIntake = hardwareMap.get(Servo.class, "left_intake");
         rightIntake = hardwareMap.get(Servo.class, "right_intake");
@@ -47,11 +49,6 @@ public class Intake {
     }
 
     public boolean inPosition(double angle) {
-        if((leftIntake.getPosition() == angle) && (rightIntake.getPosition() == angle)) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return (leftIntake.getPosition() == angle) && (rightIntake.getPosition() == angle);
     }
 }

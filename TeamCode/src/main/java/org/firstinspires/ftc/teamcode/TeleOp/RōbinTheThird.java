@@ -18,7 +18,7 @@ public class RōbinTheThird extends OpMode {
     @Override
     public void init() {
         drive.init(hardwareMap);
-        intake.init(hardwareMap);
+        intake.init(hardwareMap, telemetry);
     }
 
     @Override
@@ -44,12 +44,7 @@ public class RōbinTheThird extends OpMode {
         }
 
         if(gamepad1.rightBumperWasReleased()) {
-            if(useIntake) {
-                useIntake = false;
-            }
-            else {
-                useIntake = true;
-            }
+            useIntake = !useIntake;
         }
         if(useIntake && intake.inPosition(angle)) {
             intake.run(intakePower);
