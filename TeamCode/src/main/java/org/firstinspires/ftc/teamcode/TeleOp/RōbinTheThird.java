@@ -24,11 +24,17 @@ public class RōbinTheThird extends OpMode {
     @Override
     public void loop() {
 
-        if(gamepad1.dpadUpWasReleased()) {
-            intakePower += 0.01;
+        if(gamepad1.dpadRightWasReleased()) {
+            intakePower += 0.1;
+        }
+        if(gamepad1.dpadLeftWasReleased()) {
+            intakePower -= 0.1;
         }
         if(gamepad1.dpadDownWasReleased()) {
-            intakePower -= 0.01;
+            intakePower -= 1;
+        }
+        if(gamepad1.dpadUpWasReleased()) {
+            intakePower += 1;
         }
         telemetry.addData("Intake Power: ", intakePower);
 

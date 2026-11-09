@@ -11,7 +11,7 @@ public class Intake {
 
     private Telemetry telemetry;
     public boolean safetySwitch = true;
-    public double geckoLimit = 0.1;
+    public double geckoLimit = 5;
     Servo leftIntake;
     Servo rightIntake;
     DcMotor intake;
@@ -26,7 +26,7 @@ public class Intake {
 
         //leftIntake.setDirection(Servo.Direction.FORWARD);
         //rightIntake.setDirection((Servo.Direction.REVERSE));
-        intake.setDirection(DcMotor.Direction.FORWARD);
+        intake.setDirection(DcMotor.Direction.REVERSE);
     }
 
     public void run(double power) {
@@ -35,9 +35,10 @@ public class Intake {
 
         telemetry.addData("Gecko Safety Switch: ", safetySwitch);
 
-        if ((power > geckoLimit) && (safetySwitch = true)) {
+        if ((Math.abs(power) > geckoLimit) && (safetySwitch = true)) {
             telemetry.addLine("Unsafe power levels. ");
             telemetry.addLine("Would you like to proceed?");
+            intake.setPower(geckoLimit);
         } else {
             intake.setPower(power);
         }

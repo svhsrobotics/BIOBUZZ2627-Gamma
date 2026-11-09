@@ -11,9 +11,9 @@ public class Drivetrain {
     private DcMotor rightBack; //motor port 3
 
     public void init(HardwareMap hardwaremap) {
-        leftFront = hardwaremap.get(DcMotor.class, "left_front");
-        rightFront = hardwaremap.get(DcMotor.class, "right_front");
-        leftBack = hardwaremap.get(DcMotor.class, "left_back");
+        leftFront = hardwaremap.get(DcMotor.class, "left_Front");
+        rightFront = hardwaremap.get(DcMotor.class, "right_Front");
+        leftBack = hardwaremap.get(DcMotor.class, "left_Back");
         rightBack = hardwaremap.get(DcMotor.class, "right_Back");
 
         leftFront.setDirection(DcMotor.Direction.REVERSE);
