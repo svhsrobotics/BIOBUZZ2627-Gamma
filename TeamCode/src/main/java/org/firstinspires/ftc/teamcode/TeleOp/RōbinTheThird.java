@@ -68,8 +68,10 @@ public class RōbinTheThird extends OpMode {
             telemetry.addLine("Shooter not activated");
         }
 
+        telemetry.addData("Shooter percentntage:", 100 * shooterPower);
+
         //Calls the mecanum drive method
-        robot.drive.mecanumDrive(-gamepad1.left_stick_y, gamepad1.left_stick_x, gamepad1.right_stick_x);
+        robot.drive.mecanumDrive(gamepad1.left_stick_y, gamepad1.left_stick_x, -gamepad1.right_stick_x);
 
         //Clears telemetry and sends new ones
         telemetry.update();
